@@ -1,6 +1,6 @@
-﻿namespace ImageResizeApp
+﻿namespace ImageResizeApp.Views
 {
-    partial class ImageResizeApp
+    partial class ImageResizeView
     {
         /// <summary>
         ///  Required designer variable.
@@ -11,40 +11,37 @@
         ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        protected override void Dispose ( bool disposing )
         {
-            if (disposing && (components != null))
+            if ( disposing && ( components != null ) )
             {
-                components.Dispose();
+                components.Dispose ();
             }
-            base.Dispose(disposing);
+            base.Dispose ( disposing );
         }
 
         #region Windows Form Designer generated code
-
         /// <summary>
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent ()
         {
-            components = new System.ComponentModel.Container ();
             QualityGroupBox = new GroupBox ();
             QualityComboBox = new ComboBox ();
             PixelMinimumGroupBox = new GroupBox ();
             PixelMinimumComboBox = new ComboBox ();
-            contextMenuStrip1 = new ContextMenuStrip ( components );
-            アプリケーション設定読み込みToolStripMenuItem = new ToolStripMenuItem ();
+            ApplicationSettingReload_ToolStripMenuItem = new ToolStripMenuItem ();
             MenuStrip = new MenuStrip ();
-            設定SToolStripMenuItem = new ToolStripMenuItem ();
-            設定再読み込みToolStripMenuItem = new ToolStripMenuItem ();
-            全てAToolStripMenuItem = new ToolStripMenuItem ();
-            削除対象BToolStripMenuItem = new ToolStripMenuItem ();
-            入れ替ToolStripMenuItem = new ToolStripMenuItem ();
-            作業フォルダ設定SToolStripMenuItem = new ToolStripMenuItem ();
-            オプションOToolStripMenuItem = new ToolStripMenuItem ();
-            ログLToolStripMenuItem = new ToolStripMenuItem ();
-            ログ表示DToolStripMenuItem = new ToolStripMenuItem ();
+            Setting_ToolStripMenuItem = new ToolStripMenuItem ();
+            SettingReload_ToolStripMenuItem = new ToolStripMenuItem ();
+            AllReload_ToolStripMenuItem = new ToolStripMenuItem ();
+            DeleteTargetName_ToolStripMenuItem = new ToolStripMenuItem ();
+            Swap_ToolStripMenuItem = new ToolStripMenuItem ();
+            WorkFolderSettinf_ToolStripMenuItem = new ToolStripMenuItem ();
+            Option_ToolStripMenuItem = new ToolStripMenuItem ();
+            Log_ToolStripMenuItem = new ToolStripMenuItem ();
+            LogDisplay_ToolStripMenuItem = new ToolStripMenuItem ();
             UnzipBtn = new Button ();
             CompressionBtn = new Button ();
             ResizeStartBtn = new Button ();
@@ -55,7 +52,6 @@
             MainProgressBar = new ProgressBar ();
             QualityGroupBox.SuspendLayout ();
             PixelMinimumGroupBox.SuspendLayout ();
-            contextMenuStrip1.SuspendLayout ();
             MenuStrip.SuspendLayout ();
             SuspendLayout ();
             // 
@@ -95,83 +91,80 @@
             PixelMinimumComboBox.Size = new Size ( 121 , 23 );
             PixelMinimumComboBox.TabIndex = 0;
             // 
-            // contextMenuStrip1
+            // ApplicationSettingReload_ToolStripMenuItem
             // 
-            contextMenuStrip1.Items.AddRange ( new ToolStripItem[] { アプリケーション設定読み込みToolStripMenuItem } );
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size ( 214 , 26 );
-            // 
-            // アプリケーション設定読み込みToolStripMenuItem
-            // 
-            アプリケーション設定読み込みToolStripMenuItem.Name = "アプリケーション設定読み込みToolStripMenuItem";
-            アプリケーション設定読み込みToolStripMenuItem.Size = new Size ( 213 , 22 );
-            アプリケーション設定読み込みToolStripMenuItem.Text = "アプリケーション設定読み込み";
+            ApplicationSettingReload_ToolStripMenuItem.Name = "ApplicationSettingReload_ToolStripMenuItem";
+            ApplicationSettingReload_ToolStripMenuItem.Size = new Size ( 213 , 22 );
+            ApplicationSettingReload_ToolStripMenuItem.Text = "アプリケーション設定読み込み";
             // 
             // MenuStrip
             // 
-            MenuStrip.Items.AddRange ( new ToolStripItem[] { 設定SToolStripMenuItem , ログLToolStripMenuItem } );
+            MenuStrip.Items.AddRange ( new ToolStripItem[] { Setting_ToolStripMenuItem , Log_ToolStripMenuItem } );
             MenuStrip.Location = new Point ( 0 , 0 );
             MenuStrip.Name = "MenuStrip";
             MenuStrip.Size = new Size ( 521 , 24 );
             MenuStrip.TabIndex = 2;
             MenuStrip.Text = "menuStrip1";
             // 
-            // 設定SToolStripMenuItem
+            // Setting_ToolStripMenuItem
             // 
-            設定SToolStripMenuItem.DropDownItems.AddRange ( new ToolStripItem[] { 設定再読み込みToolStripMenuItem , 作業フォルダ設定SToolStripMenuItem , オプションOToolStripMenuItem } );
-            設定SToolStripMenuItem.Name = "設定SToolStripMenuItem";
-            設定SToolStripMenuItem.Size = new Size ( 57 , 20 );
-            設定SToolStripMenuItem.Text = "設定(&S)";
+            Setting_ToolStripMenuItem.DropDownItems.AddRange ( new ToolStripItem[] { SettingReload_ToolStripMenuItem , WorkFolderSettinf_ToolStripMenuItem , Option_ToolStripMenuItem } );
+            Setting_ToolStripMenuItem.Name = "Setting_ToolStripMenuItem";
+            Setting_ToolStripMenuItem.Size = new Size ( 57 , 20 );
+            Setting_ToolStripMenuItem.Text = "設定(&S)";
             // 
-            // 設定再読み込みToolStripMenuItem
+            // SettingReload_ToolStripMenuItem
             // 
-            設定再読み込みToolStripMenuItem.DropDownItems.AddRange ( new ToolStripItem[] { 全てAToolStripMenuItem , 削除対象BToolStripMenuItem , 入れ替ToolStripMenuItem } );
-            設定再読み込みToolStripMenuItem.Name = "設定再読み込みToolStripMenuItem";
-            設定再読み込みToolStripMenuItem.Size = new Size ( 180 , 22 );
-            設定再読み込みToolStripMenuItem.Text = "設定再読み込み(&R)";
+            SettingReload_ToolStripMenuItem.DropDownItems.AddRange ( new ToolStripItem[] { AllReload_ToolStripMenuItem , DeleteTargetName_ToolStripMenuItem , Swap_ToolStripMenuItem } );
+            SettingReload_ToolStripMenuItem.Name = "SettingReload_ToolStripMenuItem";
+            SettingReload_ToolStripMenuItem.Size = new Size ( 180 , 22 );
+            SettingReload_ToolStripMenuItem.Text = "設定再読み込み(&R)";
             // 
-            // 全てAToolStripMenuItem
+            // AllReload_ToolStripMenuItem
             // 
-            全てAToolStripMenuItem.Name = "全てAToolStripMenuItem";
-            全てAToolStripMenuItem.Size = new Size ( 137 , 22 );
-            全てAToolStripMenuItem.Text = "全て(&A)";
+            AllReload_ToolStripMenuItem.Name = "AllReload_ToolStripMenuItem";
+            AllReload_ToolStripMenuItem.Size = new Size ( 137 , 22 );
+            AllReload_ToolStripMenuItem.Text = "全て(&A)";
             // 
-            // 削除対象BToolStripMenuItem
+            // DeleteTargetName_ToolStripMenuItem
             // 
-            削除対象BToolStripMenuItem.Name = "削除対象BToolStripMenuItem";
-            削除対象BToolStripMenuItem.Size = new Size ( 137 , 22 );
-            削除対象BToolStripMenuItem.Text = "削除対象(&B)";
+            DeleteTargetName_ToolStripMenuItem.Name = "DeleteTargetName_ToolStripMenuItem";
+            DeleteTargetName_ToolStripMenuItem.Size = new Size ( 137 , 22 );
+            DeleteTargetName_ToolStripMenuItem.Text = "削除対象(&B)";
             // 
-            // 入れ替ToolStripMenuItem
+            // Swap_ToolStripMenuItem
             // 
-            入れ替ToolStripMenuItem.Name = "入れ替ToolStripMenuItem";
-            入れ替ToolStripMenuItem.Size = new Size ( 137 , 22 );
-            入れ替ToolStripMenuItem.Text = "入替対象(&C)";
+            Swap_ToolStripMenuItem.Name = "Swap_ToolStripMenuItem";
+            Swap_ToolStripMenuItem.Size = new Size ( 137 , 22 );
+            Swap_ToolStripMenuItem.Text = "入替対象(&C)";
             // 
-            // 作業フォルダ設定SToolStripMenuItem
+            // WorkFolderSettinf_ToolStripMenuItem
             // 
-            作業フォルダ設定SToolStripMenuItem.Name = "作業フォルダ設定SToolStripMenuItem";
-            作業フォルダ設定SToolStripMenuItem.Size = new Size ( 180 , 22 );
-            作業フォルダ設定SToolStripMenuItem.Text = "作業フォルダ設定(&S)...";
+            WorkFolderSettinf_ToolStripMenuItem.Name = "WorkFolderSettinf_ToolStripMenuItem";
+            WorkFolderSettinf_ToolStripMenuItem.Size = new Size ( 180 , 22 );
+            WorkFolderSettinf_ToolStripMenuItem.Text = "作業フォルダ設定(&S)...";
+            WorkFolderSettinf_ToolStripMenuItem.Click += WorkFolderSettinf_ToolStripMenuItem_Click;
             // 
-            // オプションOToolStripMenuItem
+            // Option_ToolStripMenuItem
             // 
-            オプションOToolStripMenuItem.Name = "オプションOToolStripMenuItem";
-            オプションOToolStripMenuItem.Size = new Size ( 180 , 22 );
-            オプションOToolStripMenuItem.Text = "オプション(&O)...";
+            Option_ToolStripMenuItem.Name = "Option_ToolStripMenuItem";
+            Option_ToolStripMenuItem.Size = new Size ( 180 , 22 );
+            Option_ToolStripMenuItem.Text = "オプション(&O)...";
+            Option_ToolStripMenuItem.Click += Option_ToolStripMenuItem_Click;
             // 
-            // ログLToolStripMenuItem
+            // Log_ToolStripMenuItem
             // 
-            ログLToolStripMenuItem.DropDownItems.AddRange ( new ToolStripItem[] { ログ表示DToolStripMenuItem } );
-            ログLToolStripMenuItem.Name = "ログLToolStripMenuItem";
-            ログLToolStripMenuItem.Size = new Size ( 51 , 20 );
-            ログLToolStripMenuItem.Text = "ログ(&L)";
+            Log_ToolStripMenuItem.DropDownItems.AddRange ( new ToolStripItem[] { LogDisplay_ToolStripMenuItem } );
+            Log_ToolStripMenuItem.Name = "Log_ToolStripMenuItem";
+            Log_ToolStripMenuItem.Size = new Size ( 51 , 20 );
+            Log_ToolStripMenuItem.Text = "ログ(&L)";
             // 
-            // ログ表示DToolStripMenuItem
+            // LogDisplay_ToolStripMenuItem
             // 
-            ログ表示DToolStripMenuItem.Name = "ログ表示DToolStripMenuItem";
-            ログ表示DToolStripMenuItem.Size = new Size ( 141 , 22 );
-            ログ表示DToolStripMenuItem.Text = "ログ表示(&D)...";
+            LogDisplay_ToolStripMenuItem.Name = "LogDisplay_ToolStripMenuItem";
+            LogDisplay_ToolStripMenuItem.Size = new Size ( 180 , 22 );
+            LogDisplay_ToolStripMenuItem.Text = "ログ表示(&D)...";
+            LogDisplay_ToolStripMenuItem.Click += this.LogDisplay_ToolStripMenuItem_Click;
             // 
             // UnzipBtn
             // 
@@ -241,12 +234,11 @@
             MainProgressBar.Size = new Size ( 497 , 23 );
             MainProgressBar.TabIndex = 10;
             // 
-            // ImageResizeApp
+            // ImageResizeView
             // 
             AutoScaleDimensions = new SizeF ( 7F , 15F );
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size ( 521 , 242 );
-            ContextMenuStrip = contextMenuStrip1;
             Controls.Add ( MainProgressBar );
             Controls.Add ( SubProgressBar );
             Controls.Add ( FolderDecompositionBtn );
@@ -259,35 +251,32 @@
             Controls.Add ( PixelMinimumGroupBox );
             Controls.Add ( QualityGroupBox );
             MainMenuStrip = MenuStrip;
-            Name = "ImageResizeApp";
+            Name = "ImageResizeView";
             Text = "ImageResizeApp";
             QualityGroupBox.ResumeLayout ( false );
             PixelMinimumGroupBox.ResumeLayout ( false );
-            contextMenuStrip1.ResumeLayout ( false );
             MenuStrip.ResumeLayout ( false );
             MenuStrip.PerformLayout ();
             ResumeLayout ( false );
             PerformLayout ();
         }
-
         #endregion
 
         private GroupBox QualityGroupBox;
         private ComboBox QualityComboBox;
         private GroupBox PixelMinimumGroupBox;
         private ComboBox PixelMinimumComboBox;
-        private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem アプリケーション設定読み込みToolStripMenuItem;
         private MenuStrip MenuStrip;
-        private ToolStripMenuItem ログLToolStripMenuItem;
-        private ToolStripMenuItem ログ表示DToolStripMenuItem;
-        private ToolStripMenuItem 設定SToolStripMenuItem;
-        private ToolStripMenuItem 設定再読み込みToolStripMenuItem;
-        private ToolStripMenuItem 全てAToolStripMenuItem;
-        private ToolStripMenuItem 削除対象BToolStripMenuItem;
-        private ToolStripMenuItem 入れ替ToolStripMenuItem;
-        private ToolStripMenuItem 作業フォルダ設定SToolStripMenuItem;
-        private ToolStripMenuItem オプションOToolStripMenuItem;
+        private ToolStripMenuItem ApplicationSettingReload_ToolStripMenuItem;
+        private ToolStripMenuItem Log_ToolStripMenuItem;
+        private ToolStripMenuItem LogDisplay_ToolStripMenuItem;
+        private ToolStripMenuItem Setting_ToolStripMenuItem;
+        private ToolStripMenuItem SettingReload_ToolStripMenuItem;
+        private ToolStripMenuItem AllReload_ToolStripMenuItem;
+        private ToolStripMenuItem DeleteTargetName_ToolStripMenuItem;
+        private ToolStripMenuItem Swap_ToolStripMenuItem;
+        private ToolStripMenuItem WorkFolderSettinf_ToolStripMenuItem;
+        private ToolStripMenuItem Option_ToolStripMenuItem;
         private Button UnzipBtn;
         private Button CompressionBtn;
         private Button ResizeStartBtn;
