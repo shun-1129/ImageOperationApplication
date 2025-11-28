@@ -1,3 +1,5 @@
+using ImageResizeApp.Logics.Impl;
+
 namespace ImageResizeApp
 {
     internal static class Program
@@ -6,12 +8,14 @@ namespace ImageResizeApp
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main ()
         {
+            Commons.ReadJsonFiles ();
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new ImageResizeApp());
+            ApplicationConfiguration.Initialize ();
+            Application.Run ( new ImageResizeApp () );
         }
     }
 }

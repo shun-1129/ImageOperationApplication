@@ -53,6 +53,7 @@
             FolderAllocationBtn = new Button ();
             SubProgressBar = new ProgressBar ();
             MainProgressBar = new ProgressBar ();
+            削除ファイル対象CToolStripMenuItem = new ToolStripMenuItem ();
             QualityGroupBox.SuspendLayout ();
             PixelMinimumGroupBox.SuspendLayout ();
             contextMenuStrip1.SuspendLayout ();
@@ -125,7 +126,7 @@
             // 
             // 設定再読み込みToolStripMenuItem
             // 
-            設定再読み込みToolStripMenuItem.DropDownItems.AddRange ( new ToolStripItem[] { 全てAToolStripMenuItem , 削除対象BToolStripMenuItem , 入れ替ToolStripMenuItem } );
+            設定再読み込みToolStripMenuItem.DropDownItems.AddRange ( new ToolStripItem[] { 全てAToolStripMenuItem , 削除対象BToolStripMenuItem , 削除ファイル対象CToolStripMenuItem , 入れ替ToolStripMenuItem } );
             設定再読み込みToolStripMenuItem.Name = "設定再読み込みToolStripMenuItem";
             設定再読み込みToolStripMenuItem.Size = new Size ( 180 , 22 );
             設定再読み込みToolStripMenuItem.Text = "設定再読み込み(&R)";
@@ -133,20 +134,23 @@
             // 全てAToolStripMenuItem
             // 
             全てAToolStripMenuItem.Name = "全てAToolStripMenuItem";
-            全てAToolStripMenuItem.Size = new Size ( 137 , 22 );
+            全てAToolStripMenuItem.Size = new Size ( 180 , 22 );
             全てAToolStripMenuItem.Text = "全て(&A)";
+            全てAToolStripMenuItem.Click +=  AllAToolStripMenuItem_Click ;
             // 
             // 削除対象BToolStripMenuItem
             // 
             削除対象BToolStripMenuItem.Name = "削除対象BToolStripMenuItem";
-            削除対象BToolStripMenuItem.Size = new Size ( 137 , 22 );
-            削除対象BToolStripMenuItem.Text = "削除対象(&B)";
+            削除対象BToolStripMenuItem.Size = new Size ( 180 , 22 );
+            削除対象BToolStripMenuItem.Text = "削除文字対象(&B)";
+            削除対象BToolStripMenuItem.Click +=  DeleteTargetBToolStripMenuItem_Click ;
             // 
             // 入れ替ToolStripMenuItem
             // 
             入れ替ToolStripMenuItem.Name = "入れ替ToolStripMenuItem";
-            入れ替ToolStripMenuItem.Size = new Size ( 137 , 22 );
-            入れ替ToolStripMenuItem.Text = "入替対象(&C)";
+            入れ替ToolStripMenuItem.Size = new Size ( 180 , 22 );
+            入れ替ToolStripMenuItem.Text = "入替対象(&D)";
+            入れ替ToolStripMenuItem.Click +=  SwapTargetCToolStripMenuItem_Click ;
             // 
             // 作業フォルダ設定SToolStripMenuItem
             // 
@@ -241,6 +245,13 @@
             MainProgressBar.Size = new Size ( 497 , 23 );
             MainProgressBar.TabIndex = 10;
             // 
+            // 削除ファイル対象CToolStripMenuItem
+            // 
+            削除ファイル対象CToolStripMenuItem.Name = "削除ファイル対象CToolStripMenuItem";
+            削除ファイル対象CToolStripMenuItem.Size = new Size ( 180 , 22 );
+            削除ファイル対象CToolStripMenuItem.Text = "削除ファイル対象(&C)";
+            削除ファイル対象CToolStripMenuItem.Click +=  DeleteTargetFileCToolStripMenuItem_Click ;
+            // 
             // ImageResizeApp
             // 
             AutoScaleDimensions = new SizeF ( 7F , 15F );
@@ -296,5 +307,6 @@
         private Button FolderAllocationBtn;
         private ProgressBar SubProgressBar;
         private ProgressBar MainProgressBar;
+        private ToolStripMenuItem 削除ファイル対象CToolStripMenuItem;
     }
 }
