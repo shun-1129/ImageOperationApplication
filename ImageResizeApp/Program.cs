@@ -1,3 +1,4 @@
+using ImageResizeApp.Logics.Impl;
 using ImageResizeApp.Views;
 
 namespace ImageResizeApp
@@ -8,8 +9,10 @@ namespace ImageResizeApp
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main ()
         {
+            Commons.ReadJsonFiles ();
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
