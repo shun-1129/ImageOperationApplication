@@ -227,6 +227,7 @@
             FailureFolderGroupBox.PerformLayout ();
             DuplicatesFolderGroupBox.ResumeLayout ( false );
             DuplicatesFolderGroupBox.PerformLayout ();
+            Load += WorkFolderView_Load;
             ResumeLayout ( false );
         }
 

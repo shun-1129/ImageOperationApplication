@@ -2,8 +2,11 @@
     "DeleteFiles": {
         "FileNames": [
             "By zhonyk.jpg",
+            "By zhonyk.jpeg",
             "By_zhonyk.jpg",
+            "By_zhonyk.jpeg",
             "zhonyk.jpg",
+            "zhonyk.jpeg",
             "Thumbs.db",
             "desktop.ini",
             "description.txt"
