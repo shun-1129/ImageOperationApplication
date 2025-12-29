@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using ImageResizeApp.Views;
+=======
+using ImageResizeApp.Logics.Impl;
+>>>>>>> 661778ee879eb018e18dc2eb4484cdd8868091c2
 
 namespace ImageResizeApp
 {
@@ -14,8 +18,13 @@ namespace ImageResizeApp
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+<<<<<<< HEAD
             ApplicationConfiguration.Initialize();
             Application.Run ( new ImageResizeView () );
+=======
+            ApplicationConfiguration.Initialize ();
+            Application.Run ( new ImageResizeApp () );
+>>>>>>> 661778ee879eb018e18dc2eb4484cdd8868091c2
         }
     }
 }
