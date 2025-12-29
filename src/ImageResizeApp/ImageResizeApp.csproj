@@ -36,9 +36,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="CommonLibrary">
-            <HintPath>..\..\..\SelfMadeDLL\CommonLibrary.dll</HintPath>
-        </Reference>
+      <Reference Include="CommonLibrary">
+        <HintPath>..\..\..\..\SelfMadeDLL\CommonLibrary.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
     <ItemGroup>
@@ -53,8 +53,8 @@
         </None>
     </ItemGroup>
 
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <!-- <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <Exec Command="..\bin\BuildTool\BuildTool.exe $(Configuration) $(ProjectName)" />
-    </Target>
+    </Target> -->
 
 </Project>

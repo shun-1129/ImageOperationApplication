@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36717.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizeApp", "ImageResizeApp\ImageResizeApp.csproj", "{8D0E1E49-0A29-8306-57F1-0AD80932FFA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizeApp", "src\ImageResizeApp\ImageResizeApp.csproj", "{8E9FC8F2-7F86-CC1A-0EBC-2C3BA874BB0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizeConsole", "ImageResizeConsole\ImageResizeConsole\ImageResizeConsole.csproj", "{098C4A2F-44D5-6E40-986B-F7DF853CBBED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizeConsole", "src\ImageResizeConsole\ImageResizeConsole\ImageResizeConsole.csproj", "{3DB43772-3669-F4A3-4F53-D757329D0876}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8D0E1E49-0A29-8306-57F1-0AD80932FFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D0E1E49-0A29-8306-57F1-0AD80932FFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D0E1E49-0A29-8306-57F1-0AD80932FFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D0E1E49-0A29-8306-57F1-0AD80932FFA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{098C4A2F-44D5-6E40-986B-F7DF853CBBED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{098C4A2F-44D5-6E40-986B-F7DF853CBBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{098C4A2F-44D5-6E40-986B-F7DF853CBBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{098C4A2F-44D5-6E40-986B-F7DF853CBBED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E9FC8F2-7F86-CC1A-0EBC-2C3BA874BB0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E9FC8F2-7F86-CC1A-0EBC-2C3BA874BB0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E9FC8F2-7F86-CC1A-0EBC-2C3BA874BB0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E9FC8F2-7F86-CC1A-0EBC-2C3BA874BB0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DB43772-3669-F4A3-4F53-D757329D0876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB43772-3669-F4A3-4F53-D757329D0876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB43772-3669-F4A3-4F53-D757329D0876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB43772-3669-F4A3-4F53-D757329D0876}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
