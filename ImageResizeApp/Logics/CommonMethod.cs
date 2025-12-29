@@ -1,4 +1,4 @@
-﻿using CommonLibrary.Utilities.Impl;
+﻿using CommonLibrary.Utilities;
 using System.Text.RegularExpressions;
 using static CommonLibrary.Constants.Constants;
 
@@ -16,7 +16,7 @@ namespace ImageResizeApp.Models.Logics
         /// <returns>変更後ファイル名称</returns>
         public static string ChangeFileName ( string sourceFilePath )
         {
-            string fileName = FileOperation.GetFileName(sourceFilePath, false);
+            string fileName = FileUtil.GetFileName(sourceFilePath, false);
 
             // 1文字目が '(' の場合、最初の '[' まで削除
             if ( fileName.StartsWith ( "(" ) )
@@ -59,8 +59,8 @@ namespace ImageResizeApp.Models.Logics
         /// <returns></returns>
         public static string DeleteTargetName ( string sourceFilePath )
         {
-            string fileName = FileOperation.GetFileName(sourceFilePath);
-            string fileExtension = FileOperation.GetFileExtension(sourceFilePath);
+            string fileName = FileUtil.GetFileName(sourceFilePath);
+            string fileExtension = FileUtil.GetFileExtension(sourceFilePath);
 
             string changeFileName = fileName;
 
@@ -86,7 +86,7 @@ namespace ImageResizeApp.Models.Logics
         /// <returns></returns>
         public static string ChangeFileExtension ( string sourceFilePath , string fileExtension = FileExtension.JPEG , string directoryPath = "" )
         {
-            string fileName = FileOperation.GetFileName(sourceFilePath);
+            string fileName = FileUtil.GetFileName(sourceFilePath);
             string newFileName = $"{fileName}{fileExtension}";
 
             if ( string.IsNullOrEmpty ( directoryPath ) )
@@ -125,7 +125,7 @@ namespace ImageResizeApp.Models.Logics
         /// <returns></returns>
         public static string GetCreator ( string filePath )
         {
-            string fileName = FileOperation.GetFileName(filePath);
+            string fileName = FileUtil.GetFileName(filePath);
 
             // 正規表現パターン: \\[(.*?)\\]
             string pattern = @"\[(.*?)\]";

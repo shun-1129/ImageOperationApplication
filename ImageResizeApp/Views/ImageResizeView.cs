@@ -1,5 +1,5 @@
 using CommonLibrary.Models;
-using CommonLibrary.Utilities.Impl;
+using CommonLibrary.Utilities;
 using ImageResizeApp.Logics.Impl;
 using ImageResizeApp.Logics.Interface;
 using ImageResizeApp.Models;
@@ -297,7 +297,7 @@ namespace ImageResizeApp.Views
             }
 
             int failCount = 0;
-            IEnumerable<string> filePathList = FileOperation.GetAllFile ( SelectedFolderSetting.Instance.WorkFolderPath );
+            IEnumerable<string> filePathList = FileUtil.GetAllFile ( SelectedFolderSetting.Instance.WorkFolderPath );
 
             MainProgressBar.Value = 0;
             MainProgressBar.Maximum = filePathList.Count ();
@@ -311,7 +311,7 @@ namespace ImageResizeApp.Views
                     {
                         MainProgressBar.Value++;
                     } ) );
-                    string outputFolderPath = Path.Combine ( SelectedFolderSetting.Instance.WorkFolderPath , FileOperation.GetFileName ( filePath ) );
+                    string outputFolderPath = Path.Combine ( SelectedFolderSetting.Instance.WorkFolderPath , FileUtil.GetFileName ( filePath ) );
 
                     ProcessStartInfo psi = new ProcessStartInfo
                     {
@@ -337,7 +337,7 @@ namespace ImageResizeApp.Views
                             Directory.Delete ( outputFolderPath , true );
                         }
 
-                        FileOperation.MoveFile ( filePath , SelectedFolderSetting.Instance.FailureFolderPath );
+                        FileUtil.MoveFile ( filePath , SelectedFolderSetting.Instance.FailureFolderPath );
 
                         LogData.Instance.ErrorProcessLogList.Add ( new ProcessLog (
                             ProcessLogType.Error ,
@@ -416,7 +416,7 @@ namespace ImageResizeApp.Views
             }
 
             int failCount = 0;
-            IEnumerable<string> folderPathList = DirectoryOperation.GetDirectories ( SelectedFolderSetting.Instance.TempFolderPath );
+            IEnumerable<string> folderPathList = DirectoryUtil.GetDirectories ( SelectedFolderSetting.Instance.TempFolderPath );
 
             MainProgressBar.Value = 0;
             MainProgressBar.Maximum = folderPathList.Count ();
@@ -461,7 +461,7 @@ namespace ImageResizeApp.Views
                 }
 
                 string zipFilePath = Path.Combine ( SelectedFolderSetting.Instance.TempFolderPath , $"{Path.GetFileName ( folderPath )}.zip" );
-                FileOperation.MoveFile ( zipFilePath , SelectedFolderSetting.Instance.WorkFolderPath );
+                FileUtil.MoveFile ( zipFilePath , SelectedFolderSetting.Instance.WorkFolderPath );
                 Directory.Delete ( folderPath , true );
 
                 LogData.Instance.InfoProcessLogList.Add ( new ProcessLog
@@ -519,7 +519,7 @@ namespace ImageResizeApp.Views
                 "名称変更処理を開始します。"
             ) );
 
-            IEnumerable<string> filePathList = FileOperation.GetAllFile ( SelectedFolderSetting.Instance.WorkFolderPath );
+            IEnumerable<string> filePathList = FileUtil.GetAllFile ( SelectedFolderSetting.Instance.WorkFolderPath );
 
             MainProgressBar.Value = 0;
             MainProgressBar.Maximum = filePathList.Count ();
@@ -580,11 +580,11 @@ namespace ImageResizeApp.Views
 
             await Task.Run ( async () =>
             {
-                IEnumerable<string> filePathList = FileOperation.GetAllFile ( SelectedFolderSetting.Instance.WorkFolderPath );
-                IEnumerable<string> folderPathList = DirectoryOperation.GetDirectories ( SelectedFolderSetting.Instance.WorkFolderPath );
+                IEnumerable<string> filePathList = FileUtil.GetAllFile ( SelectedFolderSetting.Instance.WorkFolderPath );
+                IEnumerable<string> folderPathList = DirectoryUtil.GetDirectories ( SelectedFolderSetting.Instance.WorkFolderPath );
                 Dictionary<string , string> folderCreatorDict = folderPathList
                     .ToDictionary (
-                        key => DirectoryOperation.GetDirectoryName ( key ) ,
+                        key => DirectoryUtil.GetDirectoryName ( key ) ,
                         path => path );
 
                 Invoke ( new Action ( () =>
@@ -621,7 +621,7 @@ namespace ImageResizeApp.Views
                     {
                         foreach ( string filePath in moveTarget.Value )
                         {
-                            FileOperation.MoveFile ( filePath , folderCreatorDict[moveTarget.Key] );
+                            FileUtil.MoveFile ( filePath , folderCreatorDict[moveTarget.Key] );
                         }
 
                         continue;
@@ -636,7 +636,7 @@ namespace ImageResizeApp.Views
                     Directory.CreateDirectory ( newFolderPath );
                     foreach ( string filePath in moveTarget.Value )
                     {
-                        FileOperation.MoveFile ( filePath , newFolderPath );
+                        FileUtil.MoveFile ( filePath , newFolderPath );
                     }
 
                     await Task.Delay ( 10 );
@@ -672,7 +672,7 @@ namespace ImageResizeApp.Views
                 "フォルダ分解処理を開始します。"
             ) );
 
-            IEnumerable<string> folderPathList = DirectoryOperation.GetDirectories ( SelectedFolderSetting.Instance.WorkFolderPath );
+            IEnumerable<string> folderPathList = DirectoryUtil.GetDirectories ( SelectedFolderSetting.Instance.WorkFolderPath );
             MainProgressBar.Value = 0;
             MainProgressBar.Maximum = folderPathList.Count ();
             MainProgressBar.Minimum = 0;
@@ -686,15 +686,15 @@ namespace ImageResizeApp.Views
                         MainProgressBar.Value++;
                     } );
 
-                    IEnumerable<string> filePathList = FileOperation.GetAllFile ( folderPath );
+                    IEnumerable<string> filePathList = FileUtil.GetAllFile ( folderPath );
                     foreach ( string filePath in filePathList )
                     {
-                        FileOperation.MoveFile ( filePath , SelectedFolderSetting.Instance.WorkFolderPath );
+                        FileUtil.MoveFile ( filePath , SelectedFolderSetting.Instance.WorkFolderPath );
                     }
 
                     await Task.Delay ( 10 );
 
-                    filePathList = FileOperation.GetAllFile ( folderPath );
+                    filePathList = FileUtil.GetAllFile ( folderPath );
                     if ( 0 == filePathList.Count () )
                     {
                         Directory.Delete ( folderPath , true );

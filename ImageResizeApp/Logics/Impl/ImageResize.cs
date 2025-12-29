@@ -1,5 +1,5 @@
 ﻿using CommonLibrary.Helpers.Impl;
-using CommonLibrary.Utilities.Impl;
+using CommonLibrary.Utilities;
 using ImageResizeApp.Constants;
 using ImageResizeApp.Logics.Interface;
 using ImageResizeApp.Models;
@@ -59,7 +59,7 @@ namespace ImageResizeApp.Logics.Impl
             List<string> tempList = Appsettings.Instance.DeleteFiles.FileNames;
             string str = JsonSerializer.Serialize ( tempList );
 
-            IEnumerable<string> folderPathList = DirectoryOperation.GetDirectories ( SelectedFolderSetting.Instance.WorkFolderPath );
+            IEnumerable<string> folderPathList = DirectoryUtil.GetDirectories ( SelectedFolderSetting.Instance.WorkFolderPath );
 
             InitializeMainProgressBar ( folderPathList.Count () );
 
@@ -97,15 +97,15 @@ namespace ImageResizeApp.Logics.Impl
                             $"イメージリサイズ処理に失敗しました。folderPath: {folderPath}" ) );
                     _logger.Error ( $"イメージリサイズ処理に失敗しました。folderPath: {folderPath}" );
 
-                    FileOperation.MoveFile ( $"{folderPath}.zip" , SelectedFolderSetting.Instance.FailureFolderPath );
+                    FileUtil.MoveFile ( $"{folderPath}.zip" , SelectedFolderSetting.Instance.FailureFolderPath );
                     failedCount++;
                     continue;
                 }
 
-                FileOperation.MoveFile ( $"{folderPath}.zip" , SelectedFolderSetting.Instance.BackupFolderPath );
+                FileUtil.MoveFile ( $"{folderPath}.zip" , SelectedFolderSetting.Instance.BackupFolderPath );
 
                 string folderName = Path.GetFileName ( folderPath );
-                DirectoryOperation.MoveDirectory ( folderPath , Path.Combine ( SelectedFolderSetting.Instance.TempFolderPath , folderName ) );
+                DirectoryUtil.MoveDirectory ( folderPath , Path.Combine ( SelectedFolderSetting.Instance.TempFolderPath , folderName ) );
             }
 
             return failedCount;

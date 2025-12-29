@@ -1,4 +1,5 @@
-﻿using ImageResizeApp.Models;
+﻿using CommonLibrary.Utilities.Json;
+using ImageResizeApp.Models;
 using System.Text.Json;
 
 namespace ImageResizeApp.Logics.Impl
@@ -12,55 +13,43 @@ namespace ImageResizeApp.Logics.Impl
             ReadFileNameChangeSettingsJsonFile ();
         }
 
-        public static void ReadDeleteFilesJsonFile()
+        public static void ReadDeleteFilesJsonFile ()
         {
             const string FILE_PATH = "DeleteFiles.json";
-            if ( !File.Exists ( FILE_PATH ) )
+            string filePath = Path.Combine ( AppContext.BaseDirectory , "Json" , FILE_PATH );
+            if ( !File.Exists ( filePath ) )
             {
                 return;
             }
 
-            string jsonContent = File.ReadAllText( FILE_PATH );
-            JsonDocument jsonDocument = JsonDocument.Parse( jsonContent );
-            JsonElement jsonElement = jsonDocument.RootElement.GetProperty( "DeleteFiles" );
-            string jsonContentElement = jsonElement.GetRawText();
-
-            DeleteFiles deleteFiles = JsonSerializer.Deserialize<DeleteFiles>( jsonContentElement ) ?? new DeleteFiles ();
-            Appsettings.Instance.DeleteFiles = deleteFiles;
+            DeleteFiles? deleteFiles = JsonReader.ReadJsonToModel<DeleteFiles> ( filePath , "DeleteFiles" );
+            Appsettings.Instance.DeleteFiles = deleteFiles is null ? new DeleteFiles () : deleteFiles;
         }
 
         public static void ReadDeleteTargetJsonFile ()
         {
             const string FILE_PATH = "DeleteTarget.json";
-            if ( !File.Exists ( FILE_PATH ) )
+            string filePath = Path.Combine ( AppContext.BaseDirectory , "Json" , FILE_PATH );
+            if ( !File.Exists ( filePath ) )
             {
                 return;
             }
 
-            string jsonContent = File.ReadAllText( FILE_PATH );
-            JsonDocument jsonDocument = JsonDocument.Parse( jsonContent );
-            JsonElement jsonElement = jsonDocument.RootElement.GetProperty( "DeleteTarget" );
-            string jsonContentElement = jsonElement.GetRawText();
-
-            DeleteTarget deleteTarget = JsonSerializer.Deserialize<DeleteTarget>( jsonContentElement ) ?? new DeleteTarget ();
-            Appsettings.Instance.DeleteTargets = deleteTarget;
+            DeleteTarget? deleteTarget = JsonReader.ReadJsonToModel<DeleteTarget> ( filePath , "DeleteTarget" );
+            Appsettings.Instance.DeleteTargets = deleteTarget is null ? new DeleteTarget () : deleteTarget;
         }
 
         public static void ReadFileNameChangeSettingsJsonFile ()
         {
             const string FILE_PATH = "FileNameChangeSettings.json";
-            if ( !File.Exists ( FILE_PATH ) )
+            string filePath = Path.Combine ( AppContext.BaseDirectory , "Json" , FILE_PATH );
+            if ( !File.Exists ( filePath ) )
             {
                 return;
             }
 
-            string jsonContent = File.ReadAllText( FILE_PATH );
-            JsonDocument jsonDocument = JsonDocument.Parse( jsonContent );
-            JsonElement jsonElement = jsonDocument.RootElement.GetProperty( "Settings" );
-            string jsonContentElement = jsonElement.GetRawText();
-
-            FileNameChangeSettings fileNameChangeSettings = JsonSerializer.Deserialize<FileNameChangeSettings>( jsonContentElement ) ?? new FileNameChangeSettings ();
-            Appsettings.Instance.FileNameChangeSettings = fileNameChangeSettings;
+            FileNameChangeSettings? fileNameChangeSettings = JsonReader.ReadJsonToModel<FileNameChangeSettings> ( filePath , "Settings" );
+            Appsettings.Instance.FileNameChangeSettings = fileNameChangeSettings is null ? new FileNameChangeSettings () : fileNameChangeSettings;
         }
     }
 }

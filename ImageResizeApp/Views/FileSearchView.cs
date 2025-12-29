@@ -1,4 +1,4 @@
-﻿using CommonLibrary.Utilities.Impl;
+﻿using CommonLibrary.Utilities;
 using ImageResizeApp.Models;
 using System.ComponentModel;
 using System.Security.Cryptography;
@@ -24,7 +24,7 @@ namespace ImageResizeApp.Views
                 set
                 {
                     _filePath = value;
-                    _fileName = FileOperation.GetFileName ( _filePath , false );
+                    _fileName = FileUtil.GetFileName ( _filePath , false );
                 }
             }
             public string FileName { get => _fileName; }
@@ -95,7 +95,7 @@ namespace ImageResizeApp.Views
 
         private async void button1_Click ( object sender , EventArgs e )
         {
-            List<string> files = FileOperation.GetAllFile ( SelectedFolderSetting.Instance.WorkFolderPath ).ToList ();
+            List<string> files = FileUtil.GetAllFile ( SelectedFolderSetting.Instance.WorkFolderPath ).ToList ();
             List<FileHashInfo> hashes = new List<FileHashInfo> ();
 
             foreach ( string file in files )
@@ -140,7 +140,7 @@ namespace ImageResizeApp.Views
 
             await Task.Run ( () =>
             {
-                IEnumerable<string> folderPathList = DirectoryOperation.GetDirectories ( RootFolderPathTextBox.Text );
+                IEnumerable<string> folderPathList = DirectoryUtil.GetDirectories ( RootFolderPathTextBox.Text );
                 foreach ( string folderPath in folderPathList )
                 {
                     _directoryInfoList.Add ( new FileSearch.DirectoryInfo ()

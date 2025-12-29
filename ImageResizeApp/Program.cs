@@ -1,3 +1,4 @@
+using ImageResizeApp.Logics.Impl;
 using ImageResizeApp.Views;
 
 namespace ImageResizeApp

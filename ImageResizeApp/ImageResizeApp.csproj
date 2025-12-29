@@ -37,13 +37,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="DeleteFiles.json">
+    <None Update="Json\DeleteFiles.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DeleteTarget.json">
+    <None Update="Json\DeleteTarget.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="FileNameChangeSettings.json">
+    <None Update="Json\FileNameChangeSettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -1,5 +1,5 @@
 ﻿using CommonLibrary.Models;
-using CommonLibrary.Utilities.Impl;
+using CommonLibrary.Utilities;
 using ImageResizeApp.Models;
 using System.Text.RegularExpressions;
 
@@ -21,7 +21,7 @@ namespace ImageResizeApp.Logics.Impl
         #region publicメソッド
         public Result ExecuteZipFileRemane ( string sourceFilePath )
         {
-            Result result = new Result();
+            Result result = Result.Success ();
 
             try
             {
@@ -43,11 +43,11 @@ namespace ImageResizeApp.Logics.Impl
                     return result;
                 }
 
-                FileOperation.MoveFile ( sourceFilePath , newFileName , SelectedFolderSetting.Instance.WorkFolderPath , isOverwriting: true );
+                FileUtil.MoveFile ( sourceFilePath , newFileName , SelectedFolderSetting.Instance.WorkFolderPath , isOverwriting: true );
             }
             catch ( Exception ex )
             {
-                result = new Result ( false , ex.Message , ex );
+                result = Result.Failure ( ex.Message , ex );
             }
 
             return result;
@@ -68,7 +68,7 @@ namespace ImageResizeApp.Logics.Impl
         /// <returns>変更後ファイル名称</returns>
         private static string ChangeFileName ( string sourceFilePath )
         {
-            string fileName = FileOperation.GetFileName(sourceFilePath, false);
+            string fileName = FileUtil.GetFileName(sourceFilePath, false);
 
             // 1文字目が '(' の場合、最初の '[' まで削除
             if ( fileName.StartsWith ( "(" ) )
@@ -111,8 +111,8 @@ namespace ImageResizeApp.Logics.Impl
         /// <returns>ファイル名称</returns>
         private static string DeleteTargetName ( string sourceFilePath )
         {
-            string fileName = FileOperation.GetFileName(sourceFilePath);
-            string fileExtension = FileOperation.GetFileExtension(sourceFilePath);
+            string fileName = FileUtil.GetFileName(sourceFilePath);
+            string fileExtension = FileUtil.GetFileExtension(sourceFilePath);
 
             string changeFileName = fileName;
 
@@ -141,7 +141,7 @@ namespace ImageResizeApp.Logics.Impl
         {
             try
             {
-                string newFileName = FileOperation.GetFileName(sourceFilePath, false);
+                string newFileName = FileUtil.GetFileName(sourceFilePath, false);
 
                 foreach ( List<string> swapTarget in Appsettings.Instance.FileNameChangeSettings.SwapTarget )
                 {
@@ -170,7 +170,7 @@ namespace ImageResizeApp.Logics.Impl
         {
             try
             {
-                string newFileName = FileOperation.GetFileName(sourceFilePath, false);
+                string newFileName = FileUtil.GetFileName(sourceFilePath, false);
 
                 foreach ( List<string> swapTargetMonth in Appsettings.Instance.FileNameChangeSettings.SwapTargetMonth )
                 {
@@ -205,7 +205,7 @@ namespace ImageResizeApp.Logics.Impl
         {
             try
             {
-                string fileName = FileOperation.GetFileName(sourceFilePath, false);
+                string fileName = FileUtil.GetFileName(sourceFilePath, false);
                 string newFileName = Regex.Replace(fileName, @"Vol\.(\d+)", match =>
                 {
                     int volNumber = int.Parse(match.Groups[1].Value);

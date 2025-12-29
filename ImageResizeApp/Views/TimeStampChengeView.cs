@@ -1,4 +1,4 @@
-﻿using CommonLibrary.Utilities.Impl;
+﻿using CommonLibrary.Utilities;
 using ImageResizeApp.Models;
 
 namespace ImageResizeApp.Views
@@ -207,7 +207,7 @@ namespace ImageResizeApp.Views
 
             await Task.Run ( () =>
             {
-                List<string> filePathList = FileOperation.GetAllFile ( SelectedFolderSetting.Instance.WorkFolderPath ).ToList ();
+                List<string> filePathList = FileUtil.GetAllFile ( SelectedFolderSetting.Instance.WorkFolderPath ).ToList ();
                 foreach ( string filePath in filePathList )
                 {
                     File.SetCreationTime ( filePath , TimeStamp );

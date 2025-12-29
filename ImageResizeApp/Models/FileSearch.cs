@@ -1,4 +1,4 @@
-﻿using CommonLibrary.Utilities.Impl;
+﻿using CommonLibrary.Utilities;
 
 namespace ImageResizeApp.Models
 {
@@ -16,7 +16,7 @@ namespace ImageResizeApp.Models
                 set
                 {
                     _directoryPath = value;
-                    _directoryName = DirectoryOperation.GetDirectoryName ( _directoryPath );
+                    _directoryName = DirectoryUtil.GetDirectoryName ( _directoryPath );
                 }
             }
 
@@ -35,7 +35,7 @@ namespace ImageResizeApp.Models
                 set
                 {
                     _filePath = value;
-                    _fileName = FileOperation.GetFileName ( _filePath , false );
+                    _fileName = FileUtil.GetFileName ( _filePath , false );
                 }
             }
 
