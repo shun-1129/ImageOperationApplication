@@ -13,6 +13,24 @@
         <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <!-- 出力先の基準を root/bin/ に変更 -->
+        <BaseOutputPath>$(SolutionDir)bin\</BaseOutputPath>
+        <!-- プロジェクト名を最後に -->
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    </PropertyGroup>
+    
+    <!-- Debug -->
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <OutputPath>$(SolutionDir)bin\Debug\$(AssemblyName)\</OutputPath>
+    </PropertyGroup>
+    
+    <!-- Release -->
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <OutputPath>$(SolutionDir)bin\Release\$(AssemblyName)\</OutputPath>
+    </PropertyGroup>
+
     <ItemGroup>
         <Compile Update="Properties\Resources.Designer.cs">
             <DesignTime>True</DesignTime>

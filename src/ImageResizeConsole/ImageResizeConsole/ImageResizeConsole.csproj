@@ -12,6 +12,24 @@
         <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <!-- 出力先の基準を root/bin/ に変更 -->
+        <BaseOutputPath>$(SolutionDir)bin\</BaseOutputPath>
+        <!-- プロジェクト名を最後に -->
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    </PropertyGroup>
+
+    <!-- Debug -->
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <OutputPath>$(SolutionDir)bin\Debug\ImageResizeApp\$(AssemblyName)\</OutputPath>
+    </PropertyGroup>
+
+    <!-- Release -->
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <OutputPath>$(SolutionDir)bin\Release\ImageResizeApp\$(AssemblyName)\</OutputPath>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="NLog" Version="6.0.7" />
         <PackageReference Include="NLog.Extensions.Logging" Version="6.1.0" />
@@ -27,7 +45,7 @@
 
     <ItemGroup>
         <None Update="appsettings.json">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Update="NLog.config">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
