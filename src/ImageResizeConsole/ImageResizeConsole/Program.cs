@@ -1,4 +1,7 @@
-﻿using ImageResizeConsole.Logics;
+﻿using CommonLibrary.Models;
+using CommonLibrary.Utilities.Json;
+using ImageResizeConsole.Logics;
+using ImageResizeConsole.Models.Data;
 using NLog;
 using System.Diagnostics;
 using System.Text.Json;
@@ -9,9 +12,17 @@ namespace ImageResizeConsole
     public class Program
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger ();
+        private static Appsettings _appsettings = new Appsettings ();
 
         public static async Task<int> Main ( string[] args )
         {
+            string path = Path.Combine ( AppContext.BaseDirectory , "appsettings.json" );
+            Result<Appsettings> result = await JsonReader.TryReadJsonToModelAsync<Appsettings> ( path , "Appsettings" );
+            if ( result.IsSuccess )
+            {
+                _appsettings = result.Data!;
+            }
+
             using CancellationTokenSource cts = new CancellationTokenSource ();
 
             Task<int> workerTask = Task.Run ( () =>
@@ -78,7 +89,7 @@ namespace ImageResizeConsole
                 }
 
                 // 画像リサイズを実行する
-                ImageResize imageResize = new ImageResize ( args[0] , minimumPixelSize , quality , deleteTargetNameList );
+                ImageResize imageResize = new ImageResize ( args[0] , minimumPixelSize , quality , deleteTargetNameList , _appsettings );
                 if ( !imageResize.Execute () )
                 {
                     return ( int ) ErrorCode.ImageResizeFailed;
