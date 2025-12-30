@@ -1,1 +1,1 @@
-# ImageResizeApp_WinForms
+# ImageOperationApplication
