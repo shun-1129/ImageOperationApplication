@@ -49,7 +49,7 @@ namespace ImageResizeApp.Views
             int rootFolderPathTextBoxHeight = RootFolderPathTextBox.Height;
             int posisionY = ( halfBtnPanelHeight - rootFolderPathTextBoxHeight ) / 2;
             RootFolderPathTextBox.Location = new Point ( PADDING , posisionY );
-            
+
             int folderTabPageHeigth = FolderSearchTabPage.Height;
             int folderTabPageWidth = FolderSearchTabPage.Width;
             int folderDataGridViewPositionY = baseBtnPanelHeight + PADDING;
@@ -124,17 +124,17 @@ namespace ImageResizeApp.Views
 
             if ( temp.Count > 0 )
             {
-                MessageBox.Show ( $"重複ファイルがあります。件数: {temp.Count} 件" );
+                MessageBox.Show ( this , $"重複ファイルがあります。件数: {temp.Count} 件" , "Warn" , MessageBoxButtons.OK , MessageBoxIcon.Warning );
             }
 
-            MessageBox.Show ( "完了" );
+            MessageBox.Show ( this , "完了" , "Info" , MessageBoxButtons.OK , MessageBoxIcon.Information );
         }
 
         private async void FolderSearchBtn_Click ( object sender , EventArgs e )
         {
             if ( string.IsNullOrEmpty ( RootFolderPathTextBox.Text ) || !Directory.Exists ( RootFolderPathTextBox.Text ) )
             {
-                MessageBox.Show ( "ルートフォルダパスが不正です。" );
+                MessageBox.Show ( this , "ルートフォルダパスが不正です。" , "Error" , MessageBoxButtons.OK , MessageBoxIcon.Error );
                 return;
             }
 
@@ -153,7 +153,7 @@ namespace ImageResizeApp.Views
             } )
             .ContinueWith ( x =>
             {
-                MessageBox.Show ( "完了" );
+                MessageBox.Show ( this , "完了" , "Info" , MessageBoxButtons.OK , MessageBoxIcon.Information );
             } ,
             TaskScheduler.FromCurrentSynchronizationContext () );
         }
@@ -218,12 +218,12 @@ namespace ImageResizeApp.Views
                 }
                 catch ( Exception ex )
                 {
-                    MessageBox.Show ( $"ファイル検索中にエラーが発生しました。\n{ex.Message}" );
+                    MessageBox.Show ( this , $"ファイル検索中にエラーが発生しました。\n{ex.Message}" , "Error" , MessageBoxButtons.OK , MessageBoxIcon.Error );
                 }
             } )
             .ContinueWith ( x =>
             {
-                MessageBox.Show ( "完了" );
+                MessageBox.Show ( this , "完了" , "Info" , MessageBoxButtons.OK , MessageBoxIcon.Information );
             } ,
             TaskScheduler.FromCurrentSynchronizationContext () );
         }
@@ -244,7 +244,7 @@ namespace ImageResizeApp.Views
             }
             catch ( Exception ex )
             {
-                MessageBox.Show ( $"ファイルハッシュの取得に失敗しました。ファイルパス: {filePath}\n{ex.Message}" );
+                MessageBox.Show ( this , $"ファイルハッシュの取得に失敗しました。ファイルパス: {filePath}\n{ex.Message}" , "Error" , MessageBoxButtons.OK , MessageBoxIcon.Error );
                 return string.Empty;
             }
         }

@@ -51,10 +51,9 @@
         <None Update="Json\FileNameChangeSettings.json">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Update="NLog.config">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
-
-    <!-- <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-        <Exec Command="..\bin\BuildTool\BuildTool.exe $(Configuration) $(ProjectName)" />
-    </Target> -->
-
+    
 </Project>

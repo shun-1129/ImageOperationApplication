@@ -260,11 +260,11 @@ namespace ImageResizeApp.Views
 
             if ( 0 < failedCount )
             {
-                MessageBox.Show ( $"{failedCount} 件失敗しました。" );
+                MessageBox.Show ( this , $"{failedCount} 件失敗しました。" , "Error" , MessageBoxButtons.OK , MessageBoxIcon.Error );
             }
             else
             {
-                MessageBox.Show ( "全件正常に完了しました。" );
+                MessageBox.Show ( this , "全件正常に完了しました。" , "Info" , MessageBoxButtons.OK , MessageBoxIcon.Information );
             }
 
             MainProgressBar.Value = 0;
@@ -292,7 +292,7 @@ namespace ImageResizeApp.Views
                     DateTime.Now ,
                     "ZIP解凍処理" ,
                     $"7-ZIPの実行ファイルが存在しません。{SEVEN_ZIP_EXE_PATH}" ) );
-                MessageBox.Show ( $"7-ZIPの実行ファイルが存在しません。{SEVEN_ZIP_EXE_PATH}" );
+                MessageBox.Show ( this , $"7-ZIPの実行ファイルが存在しません。{SEVEN_ZIP_EXE_PATH}" , "Error" , MessageBoxButtons.OK , MessageBoxIcon.Error );
                 return;
             }
 
@@ -365,7 +365,7 @@ namespace ImageResizeApp.Views
                     "ZIP解凍処理" ,
                     $"解凍処理が完了しました。ただし、{failCount} 件失敗しました。"
                 ) );
-                MessageBox.Show ( $"解凍処理が完了しました。ただし、{failCount} 件失敗しました。" );
+                MessageBox.Show ( this , $"解凍処理が完了しました。ただし、{failCount} 件失敗しました。" , "Warn" , MessageBoxButtons.OK , MessageBoxIcon.Warning );
 
                 MainProgressBar.Value = 0;
                 MainProgressBar.Maximum = 100;
@@ -380,7 +380,7 @@ namespace ImageResizeApp.Views
                 "ZIP解凍処理" ,
                 "解凍処理が完了しました。"
             ) );
-            MessageBox.Show ( "解凍完了" );
+            MessageBox.Show ( this , "解凍完了" , "Info" , MessageBoxButtons.OK , MessageBoxIcon.Information );
 
             MainProgressBar.Value = 0;
             MainProgressBar.Maximum = 100;
@@ -411,7 +411,7 @@ namespace ImageResizeApp.Views
                     "ZIP圧縮処理" ,
                     $"7-ZIPの実行ファイルが存在しません。{SEVEN_ZIP_EXE_PATH}"
                 ) );
-                MessageBox.Show ( $"7-ZIPの実行ファイルが存在しません。{SEVEN_ZIP_EXE_PATH}" );
+                MessageBox.Show ( this , $"7-ZIPの実行ファイルが存在しません。{SEVEN_ZIP_EXE_PATH}" , "Error" , MessageBoxButtons.OK , MessageBoxIcon.Error );
                 return;
             }
 
@@ -482,7 +482,7 @@ namespace ImageResizeApp.Views
                     "ZIP圧縮処理" ,
                     $"圧縮処理が完了しました。ただし、{failCount} 件失敗しました。"
                 ) );
-                MessageBox.Show ( $"圧縮処理が完了しました。ただし、{failCount} 件失敗しました。" );
+                MessageBox.Show ( this , $"圧縮処理が完了しました。ただし、{failCount} 件失敗しました。" , "Warn" , MessageBoxButtons.OK , MessageBoxIcon.Warning );
 
                 MainProgressBar.Value = 0;
                 MainProgressBar.Maximum = 100;
@@ -497,7 +497,7 @@ namespace ImageResizeApp.Views
                 "ZIP圧縮処理" ,
                 "圧縮処理が完了しました。"
             ) );
-            MessageBox.Show ( "圧縮完了" );
+            MessageBox.Show ( this , "圧縮完了" , "Info" , MessageBoxButtons.OK , MessageBoxIcon.Information );
 
             MainProgressBar.Value = 0;
             MainProgressBar.Maximum = 100;
@@ -557,7 +557,7 @@ namespace ImageResizeApp.Views
                 "名称変更処理が完了しました。"
             ) );
 
-            MessageBox.Show ( "名称変更処理が完了しました。" );
+            MessageBox.Show ( this , "名称変更処理が完了しました。" , "Info" , MessageBoxButtons.OK , MessageBoxIcon.Information );
             MainProgressBar.Value = 0;
             MainProgressBar.Maximum = 100;
             MainProgressBar.Minimum = 0;
@@ -651,7 +651,7 @@ namespace ImageResizeApp.Views
                 "フォルダ振り分け処理が完了しました。"
             ) );
 
-            MessageBox.Show ( "フォルダ振り分け処理が完了しました。" );
+            MessageBox.Show ( this , "フォルダ振り分け処理が完了しました。" , "Info" , MessageBoxButtons.OK , MessageBoxIcon.Information );
             MainProgressBar.Value = 0;
             MainProgressBar.Maximum = 100;
             MainProgressBar.Minimum = 0;

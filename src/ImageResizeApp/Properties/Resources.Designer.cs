@@ -59,14 +59,5 @@ namespace ImageResizeApp.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   ImageResize に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string ApplicationTitle {
-            get {
-                return ResourceManager.GetString("ApplicationTitle", resourceCulture);
-            }
-        }
     }
 }
