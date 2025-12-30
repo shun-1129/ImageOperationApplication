@@ -4,6 +4,7 @@ using ImageResizeApp.Logics.Impl;
 using ImageResizeApp.Logics.Interface;
 using ImageResizeApp.Models;
 using ImageResizeApp.Models.Logics;
+using NLog;
 using System.Diagnostics;
 using static ImageResizeApp.Constants.AppConstants;
 
@@ -12,6 +13,7 @@ namespace ImageResizeApp.Views
     public partial class ImageResizeView : Form
     {
         #region メンバ変数
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger ();
         private List<ComboboxItem> _qualityComboboxItemList = new List<ComboboxItem> ();
         private List<ComboboxItem> _pixelMinimumComboboxItemList = new List<ComboboxItem> ();
         #endregion
@@ -26,6 +28,7 @@ namespace ImageResizeApp.Views
         /// </summary>
         public ImageResizeView ()
         {
+            _logger.Info ( $"{nameof ( ImageResizeView )}初期化開始" );
             InitializeComponent ();
 
             ResizeSetting = new ResizeSetting ();
@@ -35,6 +38,9 @@ namespace ImageResizeApp.Views
             InitializeProgressBar ();
 
             Commons.ReadJsonFiles ();
+            _logger.Debug ( "Jsonファイルの読込完了" );
+
+            _logger.Info ( $"{nameof ( ImageResizeView )}初期化終了" );
         }
         #endregion
 
