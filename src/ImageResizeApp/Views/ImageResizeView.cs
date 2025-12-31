@@ -31,7 +31,6 @@ namespace ImageResizeApp.Views
             ResizeSetting = new ResizeSetting ();
 
             InitializeLayout ();
-            InitializeFolderSettings ();
             InitializeProgressBar ();
 
             Commons.ReadJsonFiles ();
@@ -71,11 +70,20 @@ namespace ImageResizeApp.Views
         /// </summary>
         private void InitializeFolderSettings ()
         {
-            SelectedFolderSetting.Instance.WorkFolderPath = DEFALUT_WORK_FOLDER;
-            SelectedFolderSetting.Instance.TempFolderPath = DEFALUT_TEMP_FOLDER;
-            SelectedFolderSetting.Instance.BackupFolderPath = DEFALUT_BACKUP_FOLDER;
-            SelectedFolderSetting.Instance.FailureFolderPath = DEFALUT_FAILURE_FOLDER;
-            SelectedFolderSetting.Instance.DuplicatesFolderPath = DEFALUT_DUPLICATES_FOLDER;
+            SelectedFolderSetting.Instance.WorkFolderPath = 
+                string.IsNullOrEmpty ( Properties.Settings.Default.WorkFolderPath ) ? DEFALUT_WORK_FOLDER : Properties.Settings.Default.WorkFolderPath;
+
+            SelectedFolderSetting.Instance.TempFolderPath = 
+                string.IsNullOrEmpty ( Properties.Settings.Default.TempFolderPath ) ? DEFALUT_TEMP_FOLDER : Properties.Settings.Default.TempFolderPath;
+
+            SelectedFolderSetting.Instance.BackupFolderPath = 
+                string.IsNullOrEmpty ( Properties.Settings.Default.BackupFolderPath ) ? DEFALUT_BACKUP_FOLDER : Properties.Settings.Default.BackupFolderPath;
+
+            SelectedFolderSetting.Instance.FailureFolderPath = 
+                string.IsNullOrEmpty ( Properties.Settings.Default.FailureFolderPath ) ? DEFALUT_FAILURE_FOLDER : Properties.Settings.Default.FailureFolderPath;
+
+            SelectedFolderSetting.Instance.DuplicatesFolderPath = 
+                string.IsNullOrEmpty ( Properties.Settings.Default.DuplicatesFolderPath ) ? DEFALUT_DUPLICATES_FOLDER : Properties.Settings.Default.DuplicatesFolderPath;
         }
 
         private void InitializeProgressBar ()
@@ -721,7 +729,23 @@ namespace ImageResizeApp.Views
             ) );
         }
         #endregion
-        #endregion
 
+        #region ƒCƒxƒ“ƒg
+        private void ImageResizeView_Load ( object sender , EventArgs e )
+        {
+            InitializeFolderSettings ();
+        }
+
+        private void ImageResizeView_FormClosed ( object sender , FormClosedEventArgs e )
+        {
+            Properties.Settings.Default.WorkFolderPath = SelectedFolderSetting.Instance.WorkFolderPath;
+            Properties.Settings.Default.TempFolderPath = SelectedFolderSetting.Instance.TempFolderPath;
+            Properties.Settings.Default.BackupFolderPath = SelectedFolderSetting.Instance.BackupFolderPath;
+            Properties.Settings.Default.FailureFolderPath = SelectedFolderSetting.Instance.FailureFolderPath;
+            Properties.Settings.Default.DuplicatesFolderPath = SelectedFolderSetting.Instance.DuplicatesFolderPath;
+            Properties.Settings.Default.Save ();
+        }
+        #endregion
+        #endregion
     }
 }
