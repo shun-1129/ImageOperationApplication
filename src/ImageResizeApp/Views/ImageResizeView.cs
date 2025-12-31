@@ -750,6 +750,8 @@ namespace ImageResizeApp.Views
             Properties.Settings.Default.FailureFolderPath = SelectedFolderSetting.Instance.FailureFolderPath;
             Properties.Settings.Default.DuplicatesFolderPath = SelectedFolderSetting.Instance.DuplicatesFolderPath;
             Properties.Settings.Default.Save ();
+
+            _logger.Info ( "アプリケーションを終了します。" );
         }
         #endregion
         #endregion
