@@ -7,6 +7,7 @@ namespace ImageSplitApp.Forms
 {
     public partial class ImageSplitForm : Form
     {
+        #region メンバ変数
         private int _splitXInImage;
         private SaveMode _currentSaveMode = SaveMode.Both;
         private string _workFolderPath = string.Empty;
@@ -14,7 +15,9 @@ namespace ImageSplitApp.Forms
         private Image? _image;
         private int _currentIndex = 0;
         private bool _isLeftPage = true;
+        #endregion
 
+        #region プロパティ
         public int SplitXInImage
         {
             get => _splitXInImage;
@@ -24,12 +27,20 @@ namespace ImageSplitApp.Forms
                 PictureBox.Invalidate ();
             }
         }
+        #endregion
 
+        #region コンストラクタ
+        /// <summary>
+        /// デフォルトコンストラクタ
+        /// </summary>
         public ImageSplitForm ()
         {
             InitializeComponent ();
         }
+        #endregion
 
+        #region メソッド
+        #region イベント
         private void ImageSplitForm_Load ( object sender , EventArgs e )
         {
             _workFolderPath = Properties.Settings.Default.WorkFolderPath;
@@ -183,24 +194,12 @@ namespace ImageSplitApp.Forms
 
         private void WorkFolderSettingToolStripMenuItem_Click ( object sender , EventArgs e )
         {
-            using FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog ()
-            {
-                Description = "フォルダを選択してください",
-                ShowNewFolderButton = false ,
-                SelectedPath = @"C:\Resize\work\"
-            };
+            SelectWorkFolder ();
+        }
 
-            if ( !DialogResult.OK.Equals ( folderBrowserDialog.ShowDialog () ) )
-            {
-                return;
-            }
-
-            _workFolderPath = folderBrowserDialog.SelectedPath;
-            MessageBox.Show ( this , $"{_workFolderPath} を選択しました" , "Info" , MessageBoxButtons.OK , MessageBoxIcon.Information );
-
-            _currentIndex = 0;
-
-            InitializeImage ();
+        private void WorkFolderSelectToolStripMenuItem_Click ( object sender , EventArgs e )
+        {
+            SelectWorkFolder ();
         }
 
         private void NextImageBtn_Click ( object sender , EventArgs e )
@@ -303,6 +302,7 @@ namespace ImageSplitApp.Forms
         {
             InitializeImage ();
         }
+        #endregion
 
         private void InitializeImage ()
         {
@@ -352,6 +352,28 @@ namespace ImageSplitApp.Forms
             ChangePictureBox ( _currentIndex );
         }
 
+        private void SelectWorkFolder ()
+        {
+            using FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog ()
+            {
+                Description = "フォルダを選択してください",
+                ShowNewFolderButton = false ,
+                SelectedPath = @"C:\Resize\work\"
+            };
+
+            if ( !DialogResult.OK.Equals ( folderBrowserDialog.ShowDialog () ) )
+            {
+                return;
+            }
+
+            _workFolderPath = folderBrowserDialog.SelectedPath;
+            MessageBox.Show ( this , $"{_workFolderPath} を選択しました" , "Info" , MessageBoxButtons.OK , MessageBoxIcon.Information );
+
+            _currentIndex = 0;
+
+            InitializeImage ();
+        }
+
         private void ChangePictureBox ( int index )
         {
             _image = Image.FromFile ( _imageList[index] );
@@ -387,5 +409,6 @@ namespace ImageSplitApp.Forms
                 destImage.Dispose ();
             }
         }
+        #endregion
     }
 }

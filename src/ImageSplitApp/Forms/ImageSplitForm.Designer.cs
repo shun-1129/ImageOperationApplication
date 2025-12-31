@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent ()
         {
+            components = new System.ComponentModel.Container ();
             SettingGroupBox = new GroupBox ();
             ReloadBtn = new Button ();
             ResetBtn = new Button ();
@@ -50,12 +51,15 @@
             menuStrip1 = new MenuStrip ();
             SettingToolStripMenuItem = new ToolStripMenuItem ();
             WorkFolderSettingToolStripMenuItem = new ToolStripMenuItem ();
+            ContextMenuStrip = new ContextMenuStrip ( components );
+            WorkFolderSelectToolStripMenuItem = new ToolStripMenuItem ();
             SettingGroupBox.SuspendLayout ();
             PageGroupBox.SuspendLayout ();
             SaveRadioBtnGroupBox.SuspendLayout ();
             LeftPositionGroupBox.SuspendLayout ();
             ( ( System.ComponentModel.ISupportInitialize ) PictureBox ).BeginInit ();
             menuStrip1.SuspendLayout ();
+            ContextMenuStrip.SuspendLayout ();
             SuspendLayout ();
             // 
             // SettingGroupBox
@@ -290,11 +294,25 @@
             WorkFolderSettingToolStripMenuItem.Text = "作業フォルダ設定(&w)";
             WorkFolderSettingToolStripMenuItem.Click +=  WorkFolderSettingToolStripMenuItem_Click ;
             // 
+            // ContextMenuStrip
+            // 
+            ContextMenuStrip.Items.AddRange ( new ToolStripItem[] { WorkFolderSelectToolStripMenuItem } );
+            ContextMenuStrip.Name = "ContextMenuStrip";
+            ContextMenuStrip.Size = new Size ( 158 , 26 );
+            // 
+            // WorkFolderSelectToolStripMenuItem
+            // 
+            WorkFolderSelectToolStripMenuItem.Name = "WorkFolderSelectToolStripMenuItem";
+            WorkFolderSelectToolStripMenuItem.Size = new Size ( 180 , 22 );
+            WorkFolderSelectToolStripMenuItem.Text = "作業フォルダ設定";
+            WorkFolderSelectToolStripMenuItem.Click += WorkFolderSelectToolStripMenuItem_Click;
+            // 
             // ImageSplitForm
             // 
             AutoScaleDimensions = new SizeF ( 7F , 15F );
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size ( 1085 , 450 );
+            base.ContextMenuStrip = ContextMenuStrip;
             Controls.Add ( PictureBox );
             Controls.Add ( SettingGroupBox );
             Controls.Add ( menuStrip1 );
@@ -314,10 +332,10 @@
             ( ( System.ComponentModel.ISupportInitialize ) PictureBox ).EndInit ();
             menuStrip1.ResumeLayout ( false );
             menuStrip1.PerformLayout ();
+            ContextMenuStrip.ResumeLayout ( false );
             ResumeLayout ( false );
             PerformLayout ();
         }
-
         #endregion
 
         private GroupBox SettingGroupBox;
@@ -342,5 +360,7 @@
         private Label ImageHeightLabel;
         private Button ResetBtn;
         private Button ReloadBtn;
+        private ContextMenuStrip ContextMenuStrip;
+        private ToolStripMenuItem WorkFolderSelectToolStripMenuItem;
     }
 }
