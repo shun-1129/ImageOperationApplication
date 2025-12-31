@@ -289,6 +289,8 @@
             MainMenuStrip = MenuStrip;
             Name = "ImageResizeView";
             Text = "ImageResizeApp";
+            Load +=  ImageResizeView_Load ;
+            FormClosed += ImageResizeView_FormClosed;
             QualityGroupBox.ResumeLayout ( false );
             PixelMinimumGroupBox.ResumeLayout ( false );
             MenuStrip.ResumeLayout ( false );
